@@ -6,16 +6,14 @@
 #include "GameFramework/Actor.h"
 #include "CppHubActor.generated.h"
 
-
 class ACppBaseActor;
-
 
 UCLASS()
 class CPPBASE_API ACppHubActor : public AActor
 {
 	GENERATED_BODY()
-	
-public:	
+
+public:
 	// Sets default values for this actor's properties
 	ACppHubActor();
 
@@ -46,5 +44,4 @@ public:
 	virtual void Tick(float DeltaTime) override;
 	void OnTimeToSpawn();
 	void OnTimeToDestroy();
-
 };

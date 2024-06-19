@@ -6,14 +6,12 @@
 #include "GameFramework/Actor.h"
 #include "CppBaseActor.generated.h"
 
-
 UENUM(BlueprintType)
 enum class EMovementState : uint8
 {
 	Mobility,
 	Static
 };
-
 
 USTRUCT(BlueprintType)
 struct FTranformStruct
@@ -28,16 +26,14 @@ struct FTranformStruct
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FVector CurrentScale = FVector(1.0f, 1.0f, 1.0f);
-
 };
-
 
 UCLASS()
 class CPPBASE_API ACppBaseActor : public AActor
 {
 	GENERATED_BODY()
-	
-public:	
+
+public:
 	// Sets default values for this actor's properties
 	ACppBaseActor();
 
@@ -53,6 +49,15 @@ public:
 	UPROPERTY(EditInstanceOnly)
 	bool IsAlive = true;
 
+	UPROPERTY(EditAnywhere)
+	float Amplitude = 100;
+
+	UPROPERTY(EditAnywhere)
+	float Frequency = 1;
+
+	UPROPERTY(EditAnywhere)
+	FVector InitialLocation;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -60,8 +65,10 @@ protected:
 	UFUNCTION(BlueprintCallable)
 	void ShowActorInformation();
 
-public:	
+	UFUNCTION(BlueprintCallable)
+	void SinMovement();
+
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
 };
